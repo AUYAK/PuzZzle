@@ -113,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!114 &3315488960202799755
 MonoBehaviour:
@@ -130,3 +130,4 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0.75}
   keyF: 97
   keyB: 100
+  _thrust: 50
