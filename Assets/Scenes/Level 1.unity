@@ -1552,6 +1552,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 124
       objectReference: {fileID: 0}
+    - target: {fileID: 4240220802677802119, guid: 202cbd0d103ec9c41bce63603a4427dd, type: 3}
+      propertyPath: movingDirection.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240220802677802119, guid: 202cbd0d103ec9c41bce63603a4427dd, type: 3}
+      propertyPath: movingDirection.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7270122303743122746, guid: 202cbd0d103ec9c41bce63603a4427dd, type: 3}
       propertyPath: m_Name
       value: CoBlock
@@ -1560,7 +1568,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Block
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1898699669843069266, guid: 202cbd0d103ec9c41bce63603a4427dd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 202cbd0d103ec9c41bce63603a4427dd, type: 3}
 --- !u!1001 &5002443537956297394
 PrefabInstance:
@@ -1730,10 +1739,6 @@ PrefabInstance:
     - target: {fileID: 1526729317821715649, guid: 16a2ea265a09655409c8724d7b85a870, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2256785651487261865, guid: 16a2ea265a09655409c8724d7b85a870, type: 3}
-      propertyPath: _thrust
-      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7056180100399485121, guid: 16a2ea265a09655409c8724d7b85a870, type: 3}
       propertyPath: m_Name

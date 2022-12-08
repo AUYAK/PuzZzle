@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6524945299699582790}
   - component: {fileID: 6470135831507574687}
   - component: {fileID: 4302799739040322745}
-  - component: {fileID: 4302799739040322744}
   m_Layer: 0
   m_Name: StableBlock
   m_TagString: Block
@@ -115,18 +114,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &4302799739040322744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4975278491646902480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1205ee0368bbc974a8b0e537d553c4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDirection: {x: 0.75, y: 0, z: 0}
-  keyF: 119
-  keyB: 115

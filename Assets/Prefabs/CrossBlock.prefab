@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6683428049914836245}
   - component: {fileID: 6883619030061936076}
   - component: {fileID: 4466322727943841514}
-  - component: {fileID: 3315488960202799755}
+  - component: {fileID: 8135255047126302906}
   m_Layer: 0
   m_Name: CrossBlock
   m_TagString: Block
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
---- !u!114 &3315488960202799755
+--- !u!114 &8135255047126302906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,10 +124,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4847755729710199427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1205ee0368bbc974a8b0e537d553c4e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 52fc90b81529d064c88674dce6a87d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDirection: {x: 0, y: 0, z: 0.75}
-  keyF: 97
-  keyB: 100
-  _thrust: 90
+  movingDirection: {x: 0, y: 0, z: 1}
+  _thrust: 100
+  debugWithArrowKeys: 1
