@@ -13,10 +13,12 @@ public class AndroidSwipesController : MonoBehaviour
     public static bool swipedUp = false;
     public static bool swipedDown = false;
 
-    
+
     public bool debugWithArrowKeys = true;
 
-    Vector2 startPos;
+    private Vector2 physicalStartPos;
+    private Vector2 physicalEndPos;
+    private Vector2 startPos;
     float startTime;
     private void Update()
     {
@@ -26,6 +28,7 @@ public class AndroidSwipesController : MonoBehaviour
             if (t.phase == TouchPhase.Began)
             {
                 startPos = new Vector2(t.position.x / (float)Screen.width, t.position.y / (float)Screen.height);
+                physicalStartPos = new Vector2(t.position.x / (float)Screen.width, t.position.y / (float)Screen.width);//to calculate physical length, width in both cases intentional
                 startTime = Time.time;
             }
             if (t.phase == TouchPhase.Moved)
@@ -34,55 +37,62 @@ public class AndroidSwipesController : MonoBehaviour
                 //     return;
 
                 Vector2 endPos = new Vector2(t.position.x / (float)Screen.width, t.position.y / (float)Screen.height);
-
                 Vector2 swipe = new Vector2(endPos.x - startPos.x, endPos.y - startPos.y);
+                physicalEndPos = new Vector2(t.position.x / (float)Screen.width, t.position.y / (float)Screen.width);
+                Vector2 physicalSwipe = new Vector2(physicalEndPos.x - physicalStartPos.x, physicalEndPos.y - physicalStartPos.y);
 
                 // if (swipe.magnitude < MIN_SWIPE_DISTANCE) // Too short swipe
                 //     return;
-
-                if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
-                { // Horizontal swipe
-                    if (swipe.x > 0)
-                    {
-                        swipedLeft = true;
-                        swipedRight = false;
-                        swipedUp = false;
-                        swipedDown = false;
-                    }
-                    else
-                    {
-                        swipedRight = true;
-                        swipedLeft = false;
-                        swipedUp = false;
-                        swipedDown = false;
+                if (Mathf.Abs(physicalSwipe.x) > Mathf.Abs(physicalSwipe.y))
+                {
+                    if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
+                    { // Horizontal swipe
+                        if (swipe.x > 0)
+                        {
+                            swipedLeft = true;
+                            swipedRight = false;
+                            swipedUp = false;
+                            swipedDown = false;
+                        }
+                        else
+                        {
+                            swipedRight = true;
+                            swipedLeft = false;
+                            swipedUp = false;
+                            swipedDown = false;
+                        }
                     }
                 }
-                else
+                else if (Mathf.Abs(physicalSwipe.x) < Mathf.Abs(physicalSwipe.y))
                 { // Vertical swipe
-                    if (swipe.y > 0)
+                    if (Mathf.Abs(swipe.y) > Mathf.Abs(swipe.x))
                     {
-                        swipedUp = true;
-                        swipedRight = false;
-                        swipedLeft = false;
-                        swipedDown = false;
-                    }
-                    else
-                    {
-                        swipedDown = true;
-                        swipedRight = false;
-                        swipedLeft = false;
-                        swipedUp = false;
+                        if (swipe.y > 0)
+                        {
+                            swipedUp = true;
+                            swipedRight = false;
+                            swipedLeft = false;
+                            swipedDown = false;
+                        }
+                        else
+                        {
+                            swipedDown = true;
+                            swipedRight = false;
+                            swipedLeft = false;
+                            swipedUp = false;
 
+                        }
                     }
                 }
             }
-            if (t.phase ==TouchPhase.Ended)
+            if (t.phase == TouchPhase.Ended)
             {
                 swipedDown = false;
                 swipedRight = false;
                 swipedLeft = false;
-                swipedUp = false;  
+                swipedUp = false;
             }
+            
         }
 
         if (debugWithArrowKeys)
@@ -114,29 +124,35 @@ public class AndroidSwipesController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    {      
+        if (this.movingDirection.x>0)
+        {
         if (swipedUp)
         {
             GetComponent<Rigidbody>().velocity += movingDirection;
         }
-
-        if (swipedDown)
+        else if (swipedDown)
         {
             GetComponent<Rigidbody>().velocity += -movingDirection;
         }
+        }
+        if (movingDirection.z>0)
+        {
         if (swipedLeft)
         {
             GetComponent<Rigidbody>().velocity += -movingDirection;
         }
-        if (swipedRight)
+        else if (swipedRight)
         {
             GetComponent<Rigidbody>().velocity += movingDirection;
         }
+        }
     }
-      private void OnCollisionEnter(Collision other) {
-        Rigidbody rb=this.GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(rb.velocity.x, rb.velocity.y,rb.velocity.z)* -1 * _thrust);
-        
+    private void OnCollisionEnter(Collision other)
+    {
+        Rigidbody rb = this.GetComponent<Rigidbody>();
+        rb.AddForce(new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z) * -1 * _thrust);
+
     }
 }
 
