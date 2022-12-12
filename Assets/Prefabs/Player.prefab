@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingDirection: {x: 0.75, y: 0, z: 0}
-  _thrust: 70
+  _thrust: 150
   debugWithArrowKeys: 1
