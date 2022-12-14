@@ -140,6 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fc90b81529d064c88674dce6a87d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingDirection: {x: 1, y: 0, z: 0}
-  _thrust: 25
+  movingDirection: {x: 0.75, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   debugWithArrowKeys: 1
