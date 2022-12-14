@@ -5,7 +5,7 @@ public class AndroidSwipesController : MonoBehaviour
 {
     [SerializeField] Vector3 movingDirection;
 
-    public Vector3 velocity;
+    [NonSerialized] public Vector3 velocity;
 
     // public const float MAX_SWIPE_TIME = 0.5f;
 
